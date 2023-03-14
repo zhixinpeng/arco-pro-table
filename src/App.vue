@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { ProColumnData } from './components'
+import { computed, reactive, ref } from 'vue'
+import { ProColumnData, ProFormProps } from './components'
 
 const columns = computed<ProColumnData[]>(() => [
   {
@@ -45,10 +45,81 @@ const columns = computed<ProColumnData[]>(() => [
     slotName: 'operations',
   },
 ])
+
+const options = ref<any[]>([])
+
+setTimeout(() => {
+  options.value = [
+    {
+      value: '1',
+      label: '1',
+    },
+    {
+      value: '2',
+      label: '2',
+    },
+  ]
+}, 3000)
+
+const formConfig = computed<Partial<ProFormProps>>(() => ({
+  labelColProps: {
+    span: 8,
+  },
+  wrapperColProps: {
+    span: 16,
+  },
+  schemas: [
+    {
+      field: 'name',
+      label: '集合名称',
+      component: 'Input',
+      props: {
+        showColon: true,
+      },
+    },
+    {
+      field: 'name1',
+      label: '集合名称1',
+      component: 'Input',
+      props: {
+        showColon: true,
+      },
+    },
+    {
+      field: 'name2',
+      label: '集合名称2',
+      component: 'Input',
+      props: {
+        showColon: true,
+      },
+    },
+    {
+      field: 'name3',
+      label: '集合名称3',
+      component: 'Input',
+      props: {
+        showColon: true,
+      },
+    },
+    {
+      field: 'contentType',
+      label: '内容体裁',
+      component: 'Select',
+      componentProps: {
+        options: options,
+      },
+      props: {
+        showColon: true,
+      },
+    },
+  ],
+}))
 </script>
 
 <template>
   <a-card>
-    <arco-pro-table :columns="columns"></arco-pro-table>
+    <arco-pro-table title="高级表格" :columns="columns" :form-config="formConfig"></arco-pro-table>
   </a-card>
 </template>
+
+<style lang="less"></style>

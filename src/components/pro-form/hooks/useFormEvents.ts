@@ -1,4 +1,4 @@
-import { cloneDeep } from 'lodash'
+import { cloneDeep, isArray, isObject } from 'lodash'
 import { Ref, unref, toRaw, ComputedRef } from 'vue'
 import { defaultValueComponents } from '../componentMap'
 import { ProFormAction, ProFormSchema } from '../types'
@@ -9,10 +9,11 @@ interface UseFormActionContext {
   formRef: Ref<ProFormAction>
   getSchema: ComputedRef<ProFormSchema[]>
   defaultValueRef: Ref<Record<string, any>>
+  schemaRef: Ref<ProFormSchema[]>
 }
 
 export function useFormEvents(context: UseFormActionContext) {
-  const { emit, formModel, formRef, getSchema, defaultValueRef } = context
+  const { emit, formModel, formRef, getSchema, defaultValueRef, schemaRef } = context
 
   async function submit(): Promise<void> {
     const form = unref(formRef)
@@ -32,8 +33,28 @@ export function useFormEvents(context: UseFormActionContext) {
     submit()
   }
 
+  async function resetSchema(data: Partial<ProFormSchema> | Partial<ProFormSchema>[]) {
+    let updateData: Partial<ProFormSchema>[] = []
+    if (isObject(data)) {
+      updateData.push(data as ProFormSchema)
+    }
+    if (isArray(data)) {
+      updateData = [...data]
+    }
+
+    const hasField = updateData.every((item) => Reflect.has(item, 'field') && item.field)
+
+    if (!hasField) {
+      throw new Error(
+        'All children of the form Schema array that need to be updated must contain the `field` field',
+      )
+    }
+    schemaRef.value = updateData as ProFormSchema[]
+  }
+
   return {
     submit,
     reset,
+    resetSchema,
   }
 }

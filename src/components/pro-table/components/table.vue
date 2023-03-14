@@ -38,7 +38,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, unref, useAttrs, useSlots } from 'vue'
+import { ref, computed, unref, useAttrs, watch } from 'vue'
 
 import useLoading from '../hooks/useLoading'
 import { ProForm } from '../../pro-form'
@@ -52,13 +52,13 @@ import { isBoolean } from '../../shared/is'
 import { useTableForm } from '../hooks/useTableForm'
 import { ProTableAction } from '../types/action'
 import { ProTableProps } from '../types/index'
+import { getDynamicProps } from '../../shared'
 import { PaginationProps } from '@arco-design/web-vue/es/pagination/interface'
 import { Size } from '@arco-design/web-vue/es/_utils/constant'
 import Message from '@arco-design/web-vue/es/message'
 
 const props = defineProps(baseProps)
 const attrs = useAttrs()
-const slots = useSlots()
 const innerPropsRef = ref<Partial<ProTableProps>>()
 
 // 获取 ProTable 组件的所有 Props
@@ -158,4 +158,15 @@ const tableAction: ProTableAction = {
 createTableContext({ ...tableAction, wrapRef })
 
 defineExpose(tableAction)
+
+watch(
+  () => props,
+  (props) => {
+    setProps(getDynamicProps(props))
+  },
+  {
+    immediate: true,
+    deep: true,
+  },
+)
 </script>
