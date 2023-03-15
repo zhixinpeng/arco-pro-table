@@ -15,13 +15,14 @@ yarn add arco-pro-table
 pnpm add arco-pro-table
 ```
 
-## 使用
+## 引入
 
 在项目入口文件如 `main.ts` 中全局引入并安装 ArcoProTable 组件
 
 ```ts
 import { createApp } from 'vue'
 import ArcoProTable from 'arco-pro-table'
+import 'arco-pro-table/index.css'
 
 const app = createApp(App)
 
@@ -31,6 +32,15 @@ app.mount('#app')
 ```
 
 本组件要求额外安装的依赖有：`@arco-design/web-vue`、`dayjs`、`lodash`、`sortablejs`、`vue`
+
+## 使用
+
+```vue
+<template>
+  <arco-pro-table :request="onRequest" :columns="columns" :form-config="formConfig">
+  </arco-pro-table>
+</template>
+```
 
 ## 全局类型支持
 
