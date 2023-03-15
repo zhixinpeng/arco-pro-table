@@ -11,9 +11,3 @@ export default {
     app.component('ArcoProTable', ProTable)
   },
 }
-
-declare module 'vue' {
-  export interface GlobalComponents {
-    ArcoProTable: typeof import('./pro-table').ProTable
-  }
-}

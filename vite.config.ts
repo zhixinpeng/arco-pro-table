@@ -10,17 +10,16 @@ export default defineConfig({
     vue(),
     vueJsx(),
     dts({
-      entryRoot: path.resolve(__dirname, 'src/components'),
-      insertTypesEntry: true,
-      rollupTypes: true,
+      entryRoot: path.resolve(__dirname, 'components'),
+      copyDtsFiles: true,
     }),
   ],
   build: {
     lib: {
-      entry: path.resolve(__dirname, 'src/components/index.ts'),
+      entry: path.resolve(__dirname, 'components/index.ts'),
       name: 'ArcoProTable',
       formats: ['es'],
-      fileName: 'index.js',
+      fileName: 'index',
     },
     rollupOptions: {
       external: ['vue', '@arco-design/web-vue', 'dayjs', 'lodash', 'sortablejs'],

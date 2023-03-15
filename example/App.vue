@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, reactive, ref } from 'vue'
-import { ProColumnData, ProFormProps } from './components'
+import { computed, ref } from 'vue'
+import { ProColumnData, ProFormProps } from '../components'
 
 const columns = computed<ProColumnData[]>(() => [
   {

@@ -1,6 +1,6 @@
 <template>
   <a-col :span="span">
-    <a-form-item :hide-label="true" content-class="contentClass">
+    <a-form-item :hide-label="true" content-class="action">
       <a-space>
         <a-button @click="resetAction">
           <template #icon>
@@ -48,7 +48,7 @@ const { resetAction, submitAction } = useFormContext()
 </script>
 
 <style lang="less">
-.contentClass {
+.action {
   justify-content: flex-end;
 }
 </style>

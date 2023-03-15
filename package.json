@@ -8,11 +8,15 @@
     "preview": "vite preview"
   },
   "files": [
-    "dist",
-    "src/components"
+    "dist"
   ],
-  "main": "dist/arco-pro-table.js",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    }
+  },
   "peerDependencies": {
     "@arco-design/web-vue": "^2.0.0",
     "dayjs": "^1.0.0",
