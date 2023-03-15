@@ -17,6 +17,12 @@
   "exports": {
     ".": {
       "import": "./dist/index.js"
+    },
+    "./index.css": {
+      "import": "./dist/style.css"
+    },
+    "./types.d.ts": {
+      "import": "./dist/types.d.ts"
     }
   },
   "peerDependencies": {
