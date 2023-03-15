@@ -1,18 +1,45 @@
-# Vue 3 + TypeScript + Vite
+# ArcoProTable
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+在 ArcoDesign 的基础上进行封装，专注查询表格，提供更加便利的使用方式。
 
-## Recommended IDE Setup
+## 安装
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+```bash
+# 使用 npm
+npm install arco-pro-table
 
-## Type Support For `.vue` Imports in TS
+# 使用 yarn
+yarn add arco-pro-table
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+# 使用 pnpm
+pnpm add arco-pro-table
+```
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+## 使用
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+在项目入口文件如 `main.ts` 中全局引入并安装 ArcoProTable 组件
+
+```ts
+import { createApp } from 'vue'
+import ArcoProTable from 'arco-pro-table'
+
+const app = createApp(App)
+
+app.use(ArcoProTable)
+
+app.mount('#app')
+```
+
+本组件要求额外安装的依赖有：`@arco-design/web-vue`、`dayjs`、`lodash`、`sortablejs`、`vue`
+
+## 全局类型支持
+
+如果全局引入了组件库，在项目的 `tsconfig.json` 文件配置 `compilerOptions.types` 选项可以快速获得全局类型支持：
+
+```json
+{
+  "compilerOptions": {
+    "types": ["arco-pro-table/dist/types"]
+  }
+}
+```

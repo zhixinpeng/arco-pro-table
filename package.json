@@ -8,7 +8,9 @@
     "preview": "vite preview"
   },
   "files": [
-    "dist"
+    "dist",
+    "css",
+    "types.d.ts"
   ],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
