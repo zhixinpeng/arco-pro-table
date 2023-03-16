@@ -2,7 +2,7 @@
   "name": "arco-pro-table",
   "version": "1.0.3",
   "type": "module",
-  "description": "A Vue3 Pro Table component for Arco Design, Full TypeScript",
+  "description": "基于 Vue3、TypeScript、Arco Design 封装的高级查询表格组件",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
