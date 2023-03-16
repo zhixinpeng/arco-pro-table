@@ -1,6 +1,6 @@
 {
   "name": "arco-pro-table",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "description": "A Vue3 Pro Table component for Arco Design, Full TypeScript",
   "scripts": {
