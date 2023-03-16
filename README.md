@@ -21,17 +21,22 @@ pnpm add arco-pro-table
 
 ```ts
 import { createApp } from 'vue'
+import ArcoVue from '@arco-design/web-vue'
+import ArcoVueIcon from '@arco-design/web-vue/es/icon'
 import ArcoProTable from 'arco-pro-table'
+import '@arco-design/web-vue/dist/arco.css'
 import 'arco-pro-table/index.css'
 
 const app = createApp(App)
 
+app.use(ArcoVue)
+app.use(ArcoVueIcon)
 app.use(ArcoProTable)
 
 app.mount('#app')
 ```
 
-本组件要求额外安装的依赖有：`@arco-design/web-vue`、`dayjs`、`lodash`、`sortablejs`、`vue`
+本组件要求额外安装的依赖有：`@arco-design/web-vue`、`lodash`、`sortablejs`、`vue`
 
 ## 使用
 
