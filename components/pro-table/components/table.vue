@@ -1,5 +1,5 @@
 <template>
-  <div ref="wrapRef">
+  <div class="arco-pro-table" ref="wrapRef">
     <pro-form
       v-if="getFormProps.schemas && getFormProps.schemas.length > 0"
       ref="formRef"
