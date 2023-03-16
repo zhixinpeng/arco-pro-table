@@ -4,6 +4,7 @@ import axios from 'axios'
 import dayjs from 'dayjs'
 import { SelectOptionData } from '@arco-design/web-vue/es/select/interface'
 import { ProColumnData, ProFormProps } from '../components'
+import { CascaderOption } from '@arco-design/web-vue/es/cascader/interface'
 
 const city = ref<SelectOptionData[]>([])
 
@@ -113,6 +114,62 @@ setTimeout(() => {
   ]
 }, 3000)
 
+const cascaderOptions = [
+  {
+    value: 'beijing',
+    label: 'Beijing',
+    children: [
+      {
+        value: 'chaoyang',
+        label: 'ChaoYang',
+      },
+      {
+        value: 'haidian',
+        label: 'Haidian',
+        isLeaf: true,
+      },
+      {
+        value: 'dongcheng',
+        label: 'Dongcheng',
+        isLeaf: true,
+      },
+      {
+        value: 'xicheng',
+        label: 'Xicheng',
+      },
+    ],
+  },
+  {
+    value: 'shanghai',
+    label: 'Shanghai',
+    children: [
+      {
+        value: 'huangpu',
+        label: 'Huangpu',
+        isLeaf: true,
+      },
+    ],
+  },
+]
+
+const loadMore = (option: CascaderOption, done: (children?: CascaderOption[]) => void) => {
+  window.setTimeout(() => {
+    const nodes = [
+      {
+        value: `${option.value}-option1`,
+        label: `${option.label}-Option1`,
+        isLeaf: true,
+      },
+      {
+        value: `${option.value}-option2`,
+        label: `${option.label}-Option2`,
+        isLeaf: true,
+      },
+    ]
+    done(nodes)
+  }, 2000)
+}
+
 const formConfig = computed<Partial<ProFormProps>>(() => ({
   labelColProps: {
     span: 8,
@@ -144,11 +201,14 @@ const formConfig = computed<Partial<ProFormProps>>(() => ({
       label: '年龄',
       component: 'InputNumber',
     },
-
     {
       field: 'phone',
       label: '电话',
-      component: 'Input',
+      component: 'Cascader',
+      componentProps: {
+        options: cascaderOptions,
+        loadMore,
+      },
     },
     {
       field: 'email',
