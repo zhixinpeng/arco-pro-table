@@ -39,6 +39,10 @@
 
 <script setup lang="ts">
 import { ref, computed, unref, useAttrs, watch } from 'vue'
+import { isBoolean } from 'lodash'
+import { PaginationProps } from '@arco-design/web-vue/es/pagination/interface'
+import { Size } from '@arco-design/web-vue/es/_utils/constant'
+import Message from '@arco-design/web-vue/es/message'
 
 import useLoading from '../hooks/useLoading'
 import { ProForm } from '../../pro-form'
@@ -48,14 +52,10 @@ import { useColumns } from '../hooks/useColumns'
 import Setting from './setting.vue'
 import { createTableContext } from '../hooks/useTableContext'
 import { baseProps } from '../props'
-import { isBoolean } from '../../shared/is'
 import { useTableForm } from '../hooks/useTableForm'
 import { ProTableAction } from '../types/action'
 import { ProTableProps } from '../types/index'
 import { getDynamicProps } from '../../shared'
-import { PaginationProps } from '@arco-design/web-vue/es/pagination/interface'
-import { Size } from '@arco-design/web-vue/es/_utils/constant'
-import Message from '@arco-design/web-vue/es/message'
 
 const props = defineProps(baseProps)
 const attrs = useAttrs()

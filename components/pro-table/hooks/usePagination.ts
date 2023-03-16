@@ -1,8 +1,7 @@
 import { computed, ComputedRef, ref, unref, watch } from 'vue'
-
+import { isBoolean } from 'lodash'
 import { PaginationProps } from '@arco-design/web-vue/es/pagination/interface'
 
-import { isBoolean } from '../../shared/is'
 import { ProTableProps } from '../types'
 
 export function usePagination(refProps: ComputedRef<ProTableProps>) {

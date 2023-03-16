@@ -49,13 +49,12 @@
 
 <script setup lang="ts">
 import { ref, computed, watchEffect, reactive, unref, nextTick } from 'vue'
-import { cloneDeep } from 'lodash'
+import { cloneDeep, isNull, isUndefined } from 'lodash'
 import Sortablejs from 'sortablejs'
+import { Size } from '@arco-design/web-vue/es/_utils/constant'
 
 import { useTableContext } from '../hooks/useTableContext'
 import { ComponentRef } from '../types/index'
-import { isNullAndUnDef } from '../../shared/is'
-import { Size } from '@arco-design/web-vue/es/_utils/constant'
 
 interface State {
   checkAll: boolean
@@ -169,7 +168,13 @@ function handleVisibleChange() {
       handle: '.drag-icon',
       onEnd: (evt) => {
         const { oldIndex, newIndex } = evt
-        if (isNullAndUnDef(oldIndex) || isNullAndUnDef(newIndex) || oldIndex === newIndex) {
+        if (
+          isNull(oldIndex) ||
+          isUndefined(oldIndex) ||
+          isNull(newIndex) ||
+          isUndefined(newIndex) ||
+          oldIndex === newIndex
+        ) {
           return
         }
         const columns = cloneDeep(plainSortOptions.value)

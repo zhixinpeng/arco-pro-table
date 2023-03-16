@@ -1,7 +1,7 @@
-import { Size } from "@arco-design/web-vue/es/_utils/constant"
-import { PaginationProps } from "@arco-design/web-vue/es/pagination/interface"
+import { Size } from '@arco-design/web-vue/es/_utils/constant'
+import { PaginationProps } from '@arco-design/web-vue/es/pagination/interface'
 
-import { ProColumnData, ProTableProps } from "."
+import { ProColumnData, ProTableProps } from '.'
 
 /** 表格方法 */
 export interface ProTableAction {

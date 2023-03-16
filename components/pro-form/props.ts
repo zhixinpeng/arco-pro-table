@@ -1,8 +1,8 @@
-import { PropType } from "vue"
+import { PropType } from 'vue'
 
-import { Size } from "@arco-design/web-vue/es/_utils/constant"
+import { Size } from '@arco-design/web-vue/es/_utils/constant'
 
-import { FormLabelAlign, FormLayout, ProFormSchema } from "./types"
+import { FormLabelAlign, FormLayout, ProFormSchema } from './types'
 
 export const baseProps = {
   schemas: {

@@ -21,9 +21,7 @@ import { ScrollbarProps } from '@arco-design/web-vue/es/scrollbar/interface'
 
 export const baseProps = {
   request: {
-    type: Function as PropType<
-      (params?: any, sort?: any, filter?: any) => Promise<{ data: any[]; total: number }>
-    >,
+    type: Function as PropType<(params?: any) => Promise<{ data: any[]; total: number }>>,
     default: null,
   },
   showSetting: {

@@ -8,19 +8,19 @@ import type {
   TableOperationColumn,
   TableDraggable,
 } from '@arco-design/web-vue/es/table/interface'
-import { VirtualListProps } from "@arco-design/web-vue/es/_components/virtual-list-v2/interface"
-import { Size } from "@arco-design/web-vue/es/_utils/constant"
-import { PaginationProps } from "@arco-design/web-vue/es/pagination/interface"
-import { ScrollbarProps } from "@arco-design/web-vue/es/scrollbar"
+import { VirtualListProps } from '@arco-design/web-vue/es/_components/virtual-list-v2/interface'
+import { Size } from '@arco-design/web-vue/es/_utils/constant'
+import { PaginationProps } from '@arco-design/web-vue/es/pagination/interface'
+import { ScrollbarProps } from '@arco-design/web-vue/es/scrollbar'
 
-import { ProFormProps } from "../../pro-form"
+import { ProFormProps } from '../../pro-form'
 
 /** 表格属性 */
 export interface ProTableProps {
   /**
    * 表格数据请求方法
    */
-  request: (params?: any, sort?: any, filter?: any) => Promise<{ data: any[]; total: number }>
+  request: (params?: any) => Promise<{ data: any[]; total: number }>
 
   /**
    * 表格是否显示设置按钮

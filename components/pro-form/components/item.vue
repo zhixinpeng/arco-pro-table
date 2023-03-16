@@ -1,6 +1,7 @@
 <script lang="tsx">
 import type { PropType } from 'vue'
 import { computed, defineComponent, unref } from 'vue'
+
 import { ProFormSchema, ProFormProps } from '../types'
 import { componentMap } from '../componentMap'
 

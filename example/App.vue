@@ -20,11 +20,7 @@ const fetchCity = async () => {
 
 fetchCity()
 
-const request = async (params: any, sort: any, filter: any) => {
-  console.log('查询参数：', params)
-  console.log('排序参数：', sort)
-  console.log('筛选参数：', filter)
-
+const request = async (params: any) => {
   const { data } = await axios.get('https://6412b953232c91393dd41c2d.mockapi.io/api/users')
 
   return {
@@ -241,7 +237,7 @@ const formConfig = computed<Partial<ProFormProps>>(() => ({
     <template #birth="{ record }">
       <span>{{ dayjs(record.birth).format('YYYY-MM-DD') }}</span>
     </template>
-    <template #operations="{ record }">
+    <template #operations>
       <a-space>
         <a-button type="primary" size="small">编辑</a-button>
         <a-button type="outline" status="danger" size="small">删除</a-button>
