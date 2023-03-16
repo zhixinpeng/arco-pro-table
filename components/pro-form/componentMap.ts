@@ -63,6 +63,4 @@ export const dateItemType = [
   'TimePicker',
 ]
 
-export const defaultValueComponents = ['Input', 'InputPassword', 'InputSearch', 'TextArea']
-
 export { componentMap }

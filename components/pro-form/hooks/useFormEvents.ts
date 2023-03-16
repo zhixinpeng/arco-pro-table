@@ -1,19 +1,16 @@
-import { cloneDeep, isArray, isObject } from 'lodash'
-import { Ref, unref, toRaw, ComputedRef } from 'vue'
-import { defaultValueComponents } from '../componentMap'
+import { isArray, isObject } from 'lodash'
+import { Ref, unref, toRaw } from 'vue'
 import { ProFormAction, ProFormSchema } from '../types'
 
 interface UseFormActionContext {
   emit: (event: 'submit', ...args: any[]) => void
   formModel: Record<string, any>
   formRef: Ref<ProFormAction>
-  getSchema: ComputedRef<ProFormSchema[]>
-  defaultValueRef: Ref<Record<string, any>>
   schemaRef: Ref<ProFormSchema[]>
 }
 
 export function useFormEvents(context: UseFormActionContext) {
-  const { emit, formModel, formRef, getSchema, defaultValueRef, schemaRef } = context
+  const { emit, formModel, formRef, schemaRef } = context
 
   async function submit(): Promise<void> {
     const form = unref(formRef)
@@ -25,10 +22,7 @@ export function useFormEvents(context: UseFormActionContext) {
     const form = unref(formRef)
     if (!form) return
     Object.keys(formModel).forEach((key) => {
-      const schema = unref(getSchema).find((item) => item.field === key)
-      const isInput = schema?.component && defaultValueComponents.includes(schema.component)
-      const defaultValue = cloneDeep(defaultValueRef.value[key])
-      formModel[key] = isInput ? defaultValue || '' : defaultValue
+      delete formModel[key]
     })
     submit()
   }
@@ -45,10 +39,9 @@ export function useFormEvents(context: UseFormActionContext) {
     const hasField = updateData.every((item) => Reflect.has(item, 'field') && item.field)
 
     if (!hasField) {
-      throw new Error(
-        'All children of the form Schema array that need to be updated must contain the `field` field',
-      )
+      throw new Error('schema 内必须配置 `field` 字段')
     }
+
     schemaRef.value = updateData as ProFormSchema[]
   }
 

@@ -186,15 +186,7 @@ export interface ProFormSchema {
   /**
    * 表单 <form-item> 内输入组件属性
    */
-  componentProps?: ((opt: { schema: ProFormSchema; formModel: Record<string, any> }) => Record<string, any>) | object
-
-  /**
-   * 组件默认值
-   */
-  defaultValue?: any
-
-  /**
-   * 是否自动处理与时间相关组件的默认值
-   */
-  isHandleDateDefaultValue?: boolean
+  componentProps?:
+    | ((opt: { schema: ProFormSchema; formModel: Record<string, any> }) => Record<string, any>)
+    | object
 }

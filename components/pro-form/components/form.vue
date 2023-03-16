@@ -30,12 +30,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, reactive, Ref, ref, unref, useAttrs, watch } from 'vue'
-import dayjs from 'dayjs'
-import { cloneDeep } from 'lodash'
+import { computed, reactive, Ref, ref, unref, useAttrs, watch } from 'vue'
 
 import { baseProps } from '../props'
-import { dateItemType } from '../componentMap'
 import { ProFormAction, ProFormProps, ProFormSchema } from '../types'
 import FormItem from './item.vue'
 import FormAction from './action.vue'
@@ -65,28 +62,11 @@ const getBindValues = computed(() => {
 })
 
 const formModel = reactive<Record<string, any>>({})
-const defaultValueRef = ref<Record<string, any>>({})
 const schemaRef = ref<ProFormSchema[] | null>(null)
 const isAdvanced = ref(false)
 
 const getSchema = computed((): ProFormSchema[] => {
-  const schemas: ProFormSchema[] = unref(schemaRef) || (unref(getProps).schemas as ProFormSchema[])
-
-  for (const schema of schemas) {
-    const { defaultValue, component, isHandleDateDefaultValue = true } = schema
-    if (isHandleDateDefaultValue && defaultValue && dateItemType.includes(component)) {
-      if (!Array.isArray(defaultValue)) {
-        schema.defaultValue = dayjs(defaultValue)
-      } else {
-        const def: any[] = []
-        defaultValue.forEach((item) => {
-          def.push(dayjs(item))
-        })
-        schema.defaultValue = def
-      }
-    }
-  }
-  return cloneDeep(schemas as ProFormSchema[])
+  return unref(schemaRef) || (unref(getProps).schemas as ProFormSchema[])
 })
 
 const { formRef, methods } = useForm()
@@ -103,8 +83,6 @@ const { submit, reset, resetSchema } = useFormEvents({
   emit,
   formModel,
   formRef: formRef as Ref<ProFormAction>,
-  getSchema,
-  defaultValueRef,
   schemaRef: schemaRef as Ref<ProFormSchema[]>,
 })
 
