@@ -29,9 +29,7 @@
     "url": "https://github.com/zhixinpeng/arco-pro-table/issues"
   },
   "files": [
-    "dist",
-    "css",
-    "types.d.ts"
+    "dist"
   ],
   "license": "MIT",
   "main": "dist/index.js",
