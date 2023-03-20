@@ -40,7 +40,7 @@
 <script setup lang="ts">
 import { ref, computed, unref, useAttrs, watch } from 'vue'
 import { isBoolean } from 'lodash'
-import { PaginationProps } from '@arco-design/web-vue/es/pagination/interface'
+import { PaginationProps } from '@arco-design/web-vue'
 import { Size } from '@arco-design/web-vue/es/_utils/constant'
 import Message from '@arco-design/web-vue/es/message'
 
@@ -169,4 +169,10 @@ watch(
     deep: true,
   },
 )
+</script>
+
+<script lang="ts">
+export default {
+  name: 'ProTable',
+}
 </script>

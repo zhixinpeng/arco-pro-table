@@ -119,6 +119,12 @@ watch(
 )
 </script>
 
+<script lang="ts">
+export default {
+  name: 'ProForm',
+}
+</script>
+
 <style lang="less" scoped>
 .title {
   font-weight: 500;

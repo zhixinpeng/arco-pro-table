@@ -48,6 +48,12 @@ const span = computed(() => {
 const { resetAction, submitAction } = useFormContext()
 </script>
 
+<script lang="ts">
+export default {
+  name: 'ProFormAction',
+}
+</script>
+
 <style lang="less">
 .action {
   justify-content: flex-end;
