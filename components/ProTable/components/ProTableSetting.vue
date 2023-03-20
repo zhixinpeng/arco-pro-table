@@ -212,12 +212,6 @@ const onChange = (checkedList: (string | number | boolean)[]) => {
 }
 </script>
 
-<script lang="ts">
-export default {
-  name: 'ProTableSetting',
-}
-</script>
-
 <style lang="less" scoped>
 .action-icon {
   cursor: pointer;

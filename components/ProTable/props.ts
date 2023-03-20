@@ -13,7 +13,7 @@ import {
   TableRowSelection,
 } from '@arco-design/web-vue/es/table/interface'
 
-import { ProFormProps } from '../pro-form/types'
+import { ProFormProps } from '../ProForm/types'
 import { ProColumnData } from './types'
 import { Size } from '@arco-design/web-vue/es/_utils/constant'
 import { PaginationProps } from '@arco-design/web-vue/es/pagination/interface'

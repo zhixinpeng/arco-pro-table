@@ -13,7 +13,7 @@ import { Size } from '@arco-design/web-vue/es/_utils/constant'
 import { PaginationProps } from '@arco-design/web-vue/es/pagination/interface'
 import { ScrollbarProps } from '@arco-design/web-vue/es/scrollbar'
 
-import { ProFormProps } from '../../pro-form'
+import { ProFormProps } from '../../ProForm'
 
 /** 表格属性 */
 export interface ProTableProps {

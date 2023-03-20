@@ -45,11 +45,11 @@ import { Size } from '@arco-design/web-vue/es/_utils/constant'
 import Message from '@arco-design/web-vue/es/message'
 
 import useLoading from '../hooks/useLoading'
-import { ProForm } from '../../pro-form'
+import { ProForm } from '../../ProForm'
 import { useTable } from '../hooks/useTable'
 import { usePagination } from '../hooks/usePagination'
 import { useColumns } from '../hooks/useColumns'
-import Setting from './setting.vue'
+import Setting from './ProTableSetting.vue'
 import { createTableContext } from '../hooks/useTableContext'
 import { baseProps } from '../props'
 import { useTableForm } from '../hooks/useTableForm'
@@ -171,8 +171,3 @@ watch(
 )
 </script>
 
-<script lang="ts">
-export default {
-  name: 'ProTable',
-}
-</script>

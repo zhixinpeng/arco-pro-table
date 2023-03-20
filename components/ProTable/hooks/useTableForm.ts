@@ -1,7 +1,7 @@
 import { isFunction } from 'lodash'
 import { computed, ComputedRef, unref } from 'vue'
 
-import { ProFormProps } from '../../pro-form'
+import { ProFormProps } from '../../ProForm'
 import { ProTableProps } from '../types'
 
 export function useTableForm(

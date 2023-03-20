@@ -34,8 +34,8 @@ import { computed, reactive, Ref, ref, unref, useAttrs, watch } from 'vue'
 
 import { baseProps } from '../props'
 import { ProFormAction, ProFormProps, ProFormSchema } from '../types'
-import FormItem from './item.vue'
-import FormAction from './action.vue'
+import FormItem from './ProFormItem.vue'
+import FormAction from './ProFormAction.vue'
 import { createFormContext } from '../hooks/useFormContext'
 import { useFormEvents } from '../hooks/useFormEvents'
 import { useForm } from '../hooks/useForm'
@@ -117,12 +117,6 @@ watch(
     resetSchema(schemas ?? [])
   },
 )
-</script>
-
-<script lang="ts">
-export default {
-  name: 'ProForm',
-}
 </script>
 
 <style lang="less" scoped>
