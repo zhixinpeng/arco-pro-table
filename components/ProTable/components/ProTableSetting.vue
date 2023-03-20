@@ -1,57 +1,74 @@
 <template>
-  <a-space :size="12">
-    <a-tooltip content="刷新">
-      <div class="action-icon" @click="reload"><icon-refresh size="18" /></div>
-    </a-tooltip>
-    <a-dropdown position="br" @select="handleSelectDensity">
-      <a-tooltip content="密度">
-        <div class="action-icon"><icon-line-height size="18" /></div>
-      </a-tooltip>
+  <Space :size="12">
+    <Tooltip content="刷新">
+      <div class="action-icon" @click="reload"><IconRefresh size="18" /></div>
+    </Tooltip>
+    <Dropdown position="br" @select="handleSelectDensity">
+      <Tooltip content="密度">
+        <div class="action-icon"><IconLineHeight size="18" /></div>
+      </Tooltip>
       <template #content>
-        <a-doption
+        <Doption
           v-for="item in densityList"
           :key="item.value"
           :value="item.value"
           :class="{ active: item.value === size }"
         >
           <span>{{ item.name }}</span>
-        </a-doption>
+        </Doption>
       </template>
-    </a-dropdown>
-    <a-tooltip content="列表设置">
-      <a-popover trigger="click" position="br" @popup-visible-change="handleVisibleChange">
-        <div class="action-icon"><icon-settings size="18" /></div>
+    </Dropdown>
+    <Tooltip content="列表设置">
+      <Popover trigger="click" position="br" @popup-visible-change="handleVisibleChange">
+        <div class="action-icon"><IconSettings size="18" /></div>
         <template #content>
           <div id="tableSetting">
-            <a-checkbox-group
+            <CheckboxGroup
               ref="columnListRef"
               v-model:model-value="state.checkedList"
               @change="onChange"
             >
               <div v-for="item in plainSortOptions" :key="item.value" class="columns">
                 <div class="drag-icon" style="cursor: move">
-                  <icon-drag-arrow />
+                  <IconDragArrow />
                 </div>
                 <div>
-                  <a-checkbox :value="item.value"></a-checkbox>
+                  <Checkbox :value="item.value"></Checkbox>
                 </div>
                 <div class="title">
                   {{ item.label }}
                 </div>
               </div>
-            </a-checkbox-group>
+            </CheckboxGroup>
           </div>
         </template>
-      </a-popover>
-    </a-tooltip>
-  </a-space>
+      </Popover>
+    </Tooltip>
+  </Space>
 </template>
 
 <script setup lang="ts">
 import { ref, computed, watchEffect, reactive, unref, nextTick } from 'vue'
+import {
+  CheckboxGroup,
+  Checkbox,
+  Popover,
+  Dropdown,
+  Doption,
+  Tooltip,
+  Space,
+} from '@arco-design/web-vue'
+import {
+  IconRefresh,
+  IconLineHeight,
+  IconSettings,
+  IconDragArrow,
+} from '@arco-design/web-vue/es/icon'
+
+import type { Size } from '@arco-design/web-vue'
+
 import { cloneDeep, isNull, isUndefined } from 'lodash'
 import Sortablejs from 'sortablejs'
-import { Size } from '@arco-design/web-vue/es/_utils/constant'
 
 import { useTableContext } from '../hooks/useTableContext'
 import { ComponentRef } from '../types/index'

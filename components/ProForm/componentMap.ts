@@ -24,7 +24,7 @@ import {
   YearPicker,
   WeekPicker,
   QuarterPicker,
-} from '@arco-design/web-vue/es'
+} from '@arco-design/web-vue'
 import { ComponentType } from './types'
 
 const componentMap = new Map<ComponentType, Component>()

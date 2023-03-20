@@ -21,16 +21,12 @@ pnpm add arco-pro-table
 
 ```ts
 import { createApp } from 'vue'
-import ArcoVue from '@arco-design/web-vue'
-import ArcoVueIcon from '@arco-design/web-vue/es/icon'
 import ArcoProTable from 'arco-pro-table'
 import '@arco-design/web-vue/dist/arco.css'
 import 'arco-pro-table/index.css'
 
 const app = createApp(App)
 
-app.use(ArcoVue)
-app.use(ArcoVueIcon)
 app.use(ArcoProTable)
 
 app.mount('#app')

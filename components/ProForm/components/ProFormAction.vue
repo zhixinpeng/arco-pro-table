@@ -1,26 +1,28 @@
 <template>
-  <a-col :span="span">
-    <a-form-item :hide-label="true" content-class="action">
-      <a-space>
-        <a-button @click="resetAction">
+  <Col :span="span">
+    <FormItem :hide-label="true" content-class="action">
+      <Space>
+        <Button @click="resetAction">
           <template #icon>
-            <icon-refresh />
+            <IconRefresh />
           </template>
           <template #default>重置</template>
-        </a-button>
-        <a-button html-type="submit" type="primary" @click="submitAction">
+        </Button>
+        <Button html-type="submit" type="primary" @click="submitAction">
           <template #icon>
-            <icon-search />
+            <IconSearch />
           </template>
           <template #default>查询</template>
-        </a-button>
-      </a-space>
-    </a-form-item>
-  </a-col>
+        </Button>
+      </Space>
+    </FormItem>
+  </Col>
 </template>
 
 <script setup lang="ts">
 import { PropType, computed } from 'vue'
+import { Col, FormItem, Space, Button } from '@arco-design/web-vue'
+import { IconRefresh, IconSearch } from '@arco-design/web-vue/es/icon'
 
 import { useFormContext } from '../hooks/useFormContext'
 import { ProFormSchema } from '../types'

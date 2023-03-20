@@ -1,4 +1,4 @@
-import { Size } from '@arco-design/web-vue/es/_utils/constant'
+import type { Size } from '@arco-design/web-vue'
 import { PaginationProps } from '@arco-design/web-vue/es/pagination/interface'
 
 import { ProColumnData, ProTableProps } from '.'

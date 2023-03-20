@@ -7,20 +7,20 @@
       v-bind="getFormProps"
       @submit="handleFormSubmit"
     />
-    <a-row style="margin-bottom: 16px">
-      <a-col :span="12">
-        <a-space>
+    <Row style="margin-bottom: 16px">
+      <Col :span="12">
+        <Space>
           <slot name="action" />
-        </a-space>
-      </a-col>
-      <a-col :span="12" style="display: flex; align-items: center; justify-content: end">
-        <a-space :size="12">
+        </Space>
+      </Col>
+      <Col :span="12" style="display: flex; align-items: center; justify-content: end">
+        <Space :size="12">
           <slot name="toolbar" />
           <setting v-if="showSetting" />
-        </a-space>
-      </a-col>
-    </a-row>
-    <a-table
+        </Space>
+      </Col>
+    </Row>
+    <Table
       ref="tableRef"
       v-bind="getBindValues"
       :loading="loading"
@@ -33,15 +33,15 @@
       <template v-for="item in Object.keys($slots)" #[item]="data" :key="item">
         <slot :name="item" v-bind="data || {}"></slot>
       </template>
-    </a-table>
+    </Table>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed, unref, useAttrs, watch } from 'vue'
 import { isBoolean } from 'lodash'
-import { PaginationProps } from '@arco-design/web-vue'
-import { Size } from '@arco-design/web-vue/es/_utils/constant'
+import { PaginationProps, Row, Col, Space, Table } from '@arco-design/web-vue'
+import type { Size } from '@arco-design/web-vue'
 import Message from '@arco-design/web-vue/es/message'
 
 import useLoading from '../hooks/useLoading'
@@ -170,4 +170,3 @@ watch(
   },
 )
 </script>
-

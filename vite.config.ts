@@ -22,16 +22,14 @@ export default defineConfig({
       fileName: 'index',
     },
     rollupOptions: {
-      external: ['vue', '@arco-design/web-vue', 'dayjs', 'lodash', 'sortablejs'],
-      output: {
-        globals: {
-          vue: 'Vue',
-          '@arco-design/web-vue': 'ArcoVue',
-          dayjs: 'dayjs',
-          lodash: '_',
-          sortablejs: 'Sortable',
-        },
-      },
+      external: [
+        'vue',
+        '@arco-design/web-vue',
+        '@arco-design/web-vue/es/icon',
+        'dayjs',
+        'lodash',
+        'sortablejs',
+      ],
     },
   },
 })

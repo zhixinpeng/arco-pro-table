@@ -1,18 +1,18 @@
 <template>
-  <a-form ref="formRef" v-bind="getBindValues" :model="formModel">
-    <a-row align="center" justify="space-between" style="margin-bottom: 10px">
+  <Form ref="formRef" v-bind="getBindValues" :model="formModel">
+    <Row align="center" justify="space-between" style="margin-bottom: 10px">
       <div class="title">{{ props.title }}</div>
-      <a-button v-if="showAdvanced" type="text" @click="() => (isAdvanced = !isAdvanced)">
+      <Button v-if="showAdvanced" type="text" @click="() => (isAdvanced = !isAdvanced)">
         <template #icon>
-          <icon-up v-if="isAdvanced" />
-          <icon-down v-else />
+          <IconUp v-if="isAdvanced" />
+          <IconDown v-else />
         </template>
         <template #default>{{ isAdvanced ? '收起' : '更多筛选' }}</template>
-      </a-button>
-    </a-row>
-    <a-row :gutter="10">
+      </Button>
+    </Row>
+    <Row :gutter="10">
       <template v-for="schema in getSchema" :key="schema.field">
-        <form-item
+        <AcroProFormItem
           :schema="schema"
           :form-model="formModel"
           :form-props="getProps"
@@ -22,20 +22,23 @@
           <template v-for="item in Object.keys($slots)" #[item]="data">
             <slot :name="item" v-bind="data || {}"></slot>
           </template>
-        </form-item>
+        </AcroProFormItem>
       </template>
-      <form-action :get-schema="getSchema" :is-advanced="isAdvanced" />
-    </a-row>
-  </a-form>
+      <AcroProFormAction :get-schema="getSchema" :is-advanced="isAdvanced" />
+    </Row>
+  </Form>
 </template>
 
 <script setup lang="ts">
 import { computed, reactive, Ref, ref, unref, useAttrs, watch } from 'vue'
+import { Form, Row, Button } from '@arco-design/web-vue'
+import { IconUp, IconDown } from '@arco-design/web-vue/es/icon'
+
+import AcroProFormItem from './ProFormItem.vue'
+import AcroProFormAction from './ProFormAction.vue'
 
 import { baseProps } from '../props'
 import { ProFormAction, ProFormProps, ProFormSchema } from '../types'
-import FormItem from './ProFormItem.vue'
-import FormAction from './ProFormAction.vue'
 import { createFormContext } from '../hooks/useFormContext'
 import { useFormEvents } from '../hooks/useFormEvents'
 import { useForm } from '../hooks/useForm'

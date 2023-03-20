@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import dayjs from 'dayjs'
+import { Avatar, Space, Button } from '@arco-design/web-vue'
 import { useTable } from './hooks/useTable'
 
 const { request, columns, formConfig } = useTable()
@@ -17,16 +18,16 @@ const { request, columns, formConfig } = useTable()
     :row-selection="{ type: 'checkbox', showCheckedAll: true }"
   >
     <template #avatar="{ record }">
-      <a-avatar :src="record.avatar" />
+      <Avatar :src="record.avatar" />
     </template>
     <template #birth="{ record }">
       <span>{{ dayjs(record.birth).format('YYYY-MM-DD') }}</span>
     </template>
     <template #operations>
-      <a-space>
-        <a-button type="primary" size="small">编辑</a-button>
-        <a-button type="outline" status="danger" size="small">删除</a-button>
-      </a-space>
+      <Space>
+        <Button type="primary" size="small">编辑</Button>
+        <Button type="outline" status="danger" size="small">删除</Button>
+      </Space>
     </template>
   </arco-pro-table>
 </template>

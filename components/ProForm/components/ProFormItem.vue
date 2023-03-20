@@ -1,6 +1,7 @@
 <script lang="tsx">
 import type { PropType } from 'vue'
 import { computed, defineComponent, unref } from 'vue'
+import { FormItem, Col } from '@arco-design/web-vue'
 
 import { ProFormSchema, ProFormProps } from '../types'
 import { componentMap } from '../componentMap'
@@ -58,9 +59,9 @@ export default defineComponent({
       }
 
       return (
-        <a-form-item name={field} label={label} {...itemProps}>
+        <FormItem name={field} label={label} {...(itemProps as any)}>
           {getContent()}
-        </a-form-item>
+        </FormItem>
       )
     }
 
@@ -68,7 +69,7 @@ export default defineComponent({
       const { component } = props.schema
       if (!componentMap.has(component)) return null
 
-      return props.isAdvanced && <a-col span={6}>{renderItem()}</a-col>
+      return props.isAdvanced && <Col span={6}>{renderItem()}</Col>
     }
   },
 })

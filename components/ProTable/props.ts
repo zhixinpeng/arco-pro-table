@@ -12,10 +12,10 @@ import {
   TablePagePosition,
   TableRowSelection,
 } from '@arco-design/web-vue/es/table/interface'
+import type { Size } from '@arco-design/web-vue'
 
 import { ProFormProps } from '../ProForm/types'
 import { ProColumnData } from './types'
-import { Size } from '@arco-design/web-vue/es/_utils/constant'
 import { PaginationProps } from '@arco-design/web-vue/es/pagination/interface'
 import { ScrollbarProps } from '@arco-design/web-vue/es/scrollbar/interface'
 

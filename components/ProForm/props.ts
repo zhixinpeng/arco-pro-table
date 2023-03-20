@@ -1,6 +1,5 @@
 import { PropType } from 'vue'
-
-import { Size } from '@arco-design/web-vue/es/_utils/constant'
+import type { Size } from '@arco-design/web-vue'
 
 import { FormLabelAlign, FormLayout, ProFormSchema } from './types'
 
