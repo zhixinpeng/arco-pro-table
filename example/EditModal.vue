@@ -5,7 +5,7 @@
     @ok="handleOk"
     @cancel="handleCancel"
   >
-    <a-form ref="formRef" :model="form" @submit="handleSubmit">
+    <a-form ref="formRef" :model="form">
       <a-form-item field="name" tooltip="Please enter username" label="Username" required>
         <a-input v-model="form.name" placeholder="please enter your username..." />
       </a-form-item>
@@ -38,8 +38,14 @@ defineProps<Props>()
 const emit = defineEmits(['ok', 'cancel'])
 
 const handleOk = async () => {
-  await formRef.value?.validate((errors: undefined | Record<string, ValidatedError>) => {
+  await formRef.value?.validate(async (errors: undefined | Record<string, ValidatedError>) => {
     if (errors) return
+    // 表单校验通过之后，form 会被自动赋值，里面就是目前表单的内容
+    // 你可以在这里做一些异步操作，比如提交表单
+    // await submitForm(form)
+    // emit('ok')
+
+    // 也可以通过 emit 事件，将表单内容传递给父组件进行处理
     emit('ok', form)
   })
 }
@@ -54,9 +60,4 @@ const form = reactive<FormData>({
   post: '',
   isRead: false,
 })
-
-const handleSubmit = (data: any) => {
-  const {} = data as FormData
-  console.log(data)
-}
 </script>
