@@ -15,11 +15,11 @@ const handleEdit = (record: Record<string, any>) => {
   visible.value = true
 }
 const handleOk = (record?: Record<string, any>) => {
-  console.log(record)
+  console.log('弹窗关闭', record)
   visible.value = false
 }
 const handleDelete = (record?: Record<string, any>) => {
-  console.log(record)
+  console.log('删除数据', record)
   tableRef.value?.reload()
 }
 </script>
