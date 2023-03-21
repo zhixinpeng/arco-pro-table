@@ -20,7 +20,6 @@
 </template>
 
 <script setup lang="ts">
-import { ValidatedError } from '@arco-design/web-vue'
 import { reactive, ref } from 'vue'
 
 interface Props {
@@ -38,7 +37,7 @@ defineProps<Props>()
 const emit = defineEmits(['ok', 'cancel'])
 
 const handleOk = async () => {
-  await formRef.value?.validate(async (errors: undefined | Record<string, ValidatedError>) => {
+  await formRef.value?.validate(async (errors: any) => {
     if (errors) return
     // 表单校验通过之后，form 会被自动赋值，里面就是目前表单的内容
     // 你可以在这里做一些异步操作，比如提交表单
