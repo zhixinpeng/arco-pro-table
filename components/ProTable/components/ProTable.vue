@@ -81,7 +81,7 @@ const getBindValues = computed(() => {
 const { request } = getProps.value
 
 const showSetting = computed(() => {
-  return unref(getProps).showSetting || true
+  return unref(getProps).showSetting
 })
 
 const { loading, setLoading } = useLoading(false)
