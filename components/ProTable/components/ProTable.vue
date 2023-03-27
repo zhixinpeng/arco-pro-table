@@ -7,7 +7,7 @@
       v-bind="getFormProps"
       @submit="handleFormSubmit"
     />
-    <Row style="margin-bottom: 16px">
+    <Row style="margin-bottom: 16px" v-if="showSetting || $slots.action">
       <Col :span="12">
         <Space>
           <slot name="action" />
