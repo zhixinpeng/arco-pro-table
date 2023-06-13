@@ -29,6 +29,9 @@ export default defineComponent({
     isAdvanced: {
       type: Boolean,
     },
+    showAdvanced: {
+      type: Boolean,
+    },
   },
   setup(props) {
     const getComponentsProps = computed(() => {
@@ -67,9 +70,11 @@ export default defineComponent({
 
     return () => {
       const { component } = props.schema
+      const { cols } = props.formProps
+      const { isAdvanced, showAdvanced } = props
       if (!componentMap.has(component)) return null
 
-      return props.isAdvanced && <Col span={6}>{renderItem()}</Col>
+      return isAdvanced && <Col span={24 / cols}>{renderItem()}</Col>
     }
   },
 })

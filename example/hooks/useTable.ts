@@ -90,6 +90,7 @@ export function useTable() {
     wrapperColProps: {
       span: 16,
     },
+    cols: 4,
     schemas: [
       {
         field: 'name',
@@ -132,6 +133,14 @@ export function useTable() {
         field: 'country',
         label: '国家',
         component: 'Input',
+      },
+      {
+        field: 'date',
+        label: '日期',
+        component: 'RangePicker',
+        componentProps: {
+          mode: 'year',
+        }
       },
     ],
   }))

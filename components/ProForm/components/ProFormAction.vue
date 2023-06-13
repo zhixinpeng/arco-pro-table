@@ -25,7 +25,7 @@ import { Col, FormItem, Space, Button } from '@arco-design/web-vue'
 import { IconRefresh, IconSearch } from '@arco-design/web-vue/es/icon'
 
 import { useFormContext } from '../hooks/useFormContext'
-import { ProFormSchema } from '../types'
+import { ProFormProps, ProFormSchema } from '../types'
 
 const props = defineProps({
   getSchema: {
@@ -35,23 +35,28 @@ const props = defineProps({
   isAdvanced: {
     type: Boolean,
   },
+  formProps: {
+    type: Object as PropType<ProFormProps>,
+    default: () => ({}),
+  },
 })
 
 const span = computed(() => {
   const schemaLength = props.getSchema.length
+  const cols = props.formProps.cols
 
-  if (schemaLength < 3) return 24 - schemaLength * 6
+  if (schemaLength < cols - 1) return 24 - schemaLength * (24 / cols)
 
   if (props.isAdvanced) return 24
 
-  return 6
+  return 24 / cols
 })
 
 const { resetAction, submitAction } = useFormContext()
 </script>
 
 <style lang="less">
-.action {
+.arco-form-item-content.action {
   justify-content: flex-end;
 }
 </style>

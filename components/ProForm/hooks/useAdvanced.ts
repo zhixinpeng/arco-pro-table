@@ -1,13 +1,14 @@
 import { computed, ComputedRef, Ref, shallowReactive, unref, watch } from 'vue'
-import { ProFormSchema } from '../types'
+import { ProFormProps, ProFormSchema } from '../types'
 
 interface UseAdvancedContext {
   isAdvanced: Ref<boolean>
   getSchema: ComputedRef<ProFormSchema[]>
+  formProps: ProFormProps
 }
 
 export function useAdvanced(context: UseAdvancedContext) {
-  const { isAdvanced, getSchema } = context
+  const { isAdvanced, getSchema, formProps } = context
 
   const fieldsIsAdvancedMap = shallowReactive<Record<string, boolean>>({})
 
@@ -21,14 +22,14 @@ export function useAdvanced(context: UseAdvancedContext) {
 
   const showAdvanced = computed(() => {
     const schema = unref(getSchema)
-    return schema.length > 3
+    return schema.length > formProps.cols - 1
   })
 
   function updateAdvanced() {
     const schema = unref(getSchema)
     const advanced = unref(isAdvanced)
     schema.forEach((item, index) => {
-      if (index <= 2) {
+      if (index < formProps.cols - 1) {
         fieldsIsAdvancedMap[item.field] = true
       } else {
         fieldsIsAdvancedMap[item.field] = advanced

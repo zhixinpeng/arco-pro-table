@@ -18,13 +18,14 @@
           :form-props="getProps"
           :set-form-model="setFormModel"
           :is-advanced="fieldsIsAdvancedMap[schema.field]"
+          :show-advanced="isAdvanced"
         >
           <template v-for="item in Object.keys($slots)" #[item]="data">
             <slot :name="item" v-bind="data || {}"></slot>
           </template>
         </AcroProFormItem>
       </template>
-      <AcroProFormAction :get-schema="getSchema" :is-advanced="isAdvanced" />
+      <AcroProFormAction :get-schema="getSchema" :is-advanced="isAdvanced" :form-props="getProps" />
     </Row>
   </Form>
 </template>
@@ -101,6 +102,7 @@ const setFormModel = (key: string, value: any) => {
 const { showAdvanced, fieldsIsAdvancedMap } = useAdvanced({
   isAdvanced,
   getSchema,
+  formProps: unref(getProps),
 })
 
 watch(

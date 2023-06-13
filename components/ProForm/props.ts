@@ -38,4 +38,8 @@ export const baseProps = {
     default: false,
   },
   title: String,
+  cols: {
+    type: Number,
+    default: 4,
+  },
 }

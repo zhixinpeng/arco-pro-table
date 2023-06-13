@@ -1,9 +1,9 @@
 import { FieldData } from '@arco-design/web-vue/es/form/interface'
 
 const FORM_LAYOUTS = ['horizontal', 'vertical', 'inline'] as const
-export type FormLayout = typeof FORM_LAYOUTS[number]
+export type FormLayout = (typeof FORM_LAYOUTS)[number]
 const FORM_LABEL_ALIGNS = ['left', 'right'] as const
-export type FormLabelAlign = typeof FORM_LABEL_ALIGNS[number]
+export type FormLabelAlign = (typeof FORM_LABEL_ALIGNS)[number]
 
 export interface ProFormProps {
   /**
@@ -43,6 +43,11 @@ export interface ProFormProps {
    * 标题
    */
   title: string
+
+  /**
+   * 列数
+   */
+  cols: number
 }
 
 export interface ProFormAction {
@@ -161,6 +166,7 @@ export type ComponentType =
   | 'Upload'
   | 'Slider'
   | 'Rate'
+  | 'RangePicker'
 
 export interface ProFormSchema {
   /**

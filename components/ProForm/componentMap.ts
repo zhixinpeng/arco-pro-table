@@ -24,6 +24,7 @@ import {
   YearPicker,
   WeekPicker,
   QuarterPicker,
+  RangePicker,
 } from '@arco-design/web-vue'
 import { ComponentType } from './types'
 
@@ -53,6 +54,7 @@ componentMap.set('MonthPicker', MonthPicker)
 componentMap.set('YearPicker', YearPicker)
 componentMap.set('WeekPicker', WeekPicker)
 componentMap.set('QuarterPicker', QuarterPicker)
+componentMap.set('RangePicker', RangePicker)
 
 export const dateItemType = [
   'DatePicker',
@@ -61,6 +63,7 @@ export const dateItemType = [
   'MonthPicker',
   'WeekPicker',
   'TimePicker',
+  'RangePicker',
 ]
 
 export { componentMap }
