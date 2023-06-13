@@ -1,6 +1,6 @@
 {
   "name": "arco-pro-table",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "type": "module",
   "description": "基于 Vue3、TypeScript、Arco Design 封装的高级查询表格组件",
   "scripts": {
