@@ -81,7 +81,7 @@ const proFormAction: ProFormAction = {
 
 defineExpose(proFormAction)
 
-const emit = defineEmits(['submit'])
+const emit = defineEmits(['submit', 'reset'])
 
 const { submit, reset, resetSchema } = useFormEvents({
   emit,

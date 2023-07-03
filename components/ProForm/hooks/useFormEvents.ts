@@ -3,7 +3,7 @@ import { Ref, unref, toRaw } from 'vue'
 import { ProFormAction, ProFormSchema } from '../types'
 
 interface UseFormActionContext {
-  emit: (event: 'submit', ...args: any[]) => void
+  emit: (event: 'submit' | 'reset', ...args: any[]) => void
   formModel: Record<string, any>
   formRef: Ref<ProFormAction>
   schemaRef: Ref<ProFormSchema[]>
@@ -25,6 +25,7 @@ export function useFormEvents(context: UseFormActionContext) {
       delete formModel[key]
     })
     submit()
+    emit('reset')
   }
 
   async function resetSchema(data: Partial<ProFormSchema> | Partial<ProFormSchema>[]) {

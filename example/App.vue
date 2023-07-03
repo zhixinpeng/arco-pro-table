@@ -22,6 +22,9 @@ const handleDelete = (record?: Record<string, any>) => {
   console.log('删除数据', record)
   tableRef.value?.reload()
 }
+const handleReset = () => {
+  console.log('重置')
+}
 </script>
 
 <template>
@@ -36,6 +39,7 @@ const handleDelete = (record?: Record<string, any>) => {
       :form-config="formConfig"
       :pagination="{ pageSize: 10 }"
       :row-selection="{ type: 'checkbox', showCheckedAll: true }"
+      @reset="handleReset"
     >
       <template #action>
         <a-button type="primary" size="small" @click="() => handleEdit({})">新增</a-button>

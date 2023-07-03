@@ -6,6 +6,7 @@
       submit-on-reset
       v-bind="getFormProps"
       @submit="handleFormSubmit"
+      @reset="handleFormReset"
     />
     <Row style="margin-bottom: 16px" v-if="showSetting || $slots.action">
       <Col :span="12">
@@ -95,6 +96,8 @@ const { getCacheColumns, getColumns, setColumns, getViewColumns } = useColumns(g
 
 const wrapRef = ref(null)
 
+const emit = defineEmits(['reset'])
+
 const fetchData = async (info?: Record<string, any>) => {
   if (!request) return
   setLoading(true)
@@ -139,7 +142,7 @@ const onPageSizeChange = (pageSize: number) => {
   fetchData()
 }
 
-const { getFormProps, handleFormSubmit } = useTableForm(getProps, fetchData)
+const { getFormProps, handleFormSubmit, handleFormReset } = useTableForm(getProps, fetchData, emit)
 
 const tableAction: ProTableAction = {
   ...methods,
