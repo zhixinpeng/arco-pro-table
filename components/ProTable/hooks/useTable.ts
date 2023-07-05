@@ -41,8 +41,8 @@ export function useTable() {
     clearSorters: () => {
       getTableInstance().clearSorters()
     },
-    reload: async () => {
-      await getTableInstance().reload()
+    reload: async (force) => {
+      await getTableInstance().reload(force)
     },
     setProps: (props: Partial<ProTableProps>) => {
       getTableInstance().setProps(props)

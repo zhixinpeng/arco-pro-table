@@ -142,11 +142,16 @@ const onPageSizeChange = (pageSize: number) => {
   fetchData()
 }
 
+const reload = async (force?: boolean) => {
+  if (force) setPagination({ current: 1 })
+  await fetchData()
+}
+
 const { getFormProps, handleFormSubmit, handleFormReset } = useTableForm(getProps, fetchData, emit)
 
 const tableAction: ProTableAction = {
   ...methods,
-  reload: fetchData,
+  reload,
   setProps,
   getSize: () => unref(getBindValues).size as Size,
   getColumns,

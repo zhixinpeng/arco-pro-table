@@ -55,8 +55,9 @@ export interface ProTableAction {
 
   /**
    * 刷新表格
+   * @param { boolean } force 是否强制刷新（返回第一页）
    */
-  reload: () => Promise<void>
+  reload: (force?: boolean) => Promise<void>
 
   /**
    * 设置表格属性

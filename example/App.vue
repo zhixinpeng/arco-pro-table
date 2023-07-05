@@ -20,7 +20,7 @@ const handleOk = (record?: Record<string, any>) => {
 }
 const handleDelete = (record?: Record<string, any>) => {
   console.log('删除数据', record)
-  tableRef.value?.reload()
+  tableRef.value?.reload(true)
 }
 const handleReset = () => {
   console.log('重置')
@@ -37,7 +37,7 @@ const handleReset = () => {
       :request="request"
       :columns="columns"
       :form-config="formConfig"
-      :pagination="{ pageSize: 10 }"
+      :pagination="{ pageSize: 5 }"
       :row-selection="{ type: 'checkbox', showCheckedAll: true }"
       @reset="handleReset"
     >
