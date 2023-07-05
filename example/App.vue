@@ -25,6 +25,12 @@ const handleDelete = (record?: Record<string, any>) => {
 const handleReset = () => {
   console.log('重置')
 }
+const handlePageChange = (page: number) => {
+  console.log(page)
+}
+const handlePageSizeChange = (pageSize: number) => {
+  console.log(pageSize)
+}
 </script>
 
 <template>
@@ -40,6 +46,8 @@ const handleReset = () => {
       :pagination="{ pageSize: 5 }"
       :row-selection="{ type: 'checkbox', showCheckedAll: true }"
       @reset="handleReset"
+      @page-change="handlePageChange"
+      @page-size-change="handlePageSizeChange"
     >
       <template #action>
         <a-button type="primary" size="small" @click="() => handleEdit({})">新增</a-button>

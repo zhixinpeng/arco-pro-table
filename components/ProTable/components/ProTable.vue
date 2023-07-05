@@ -59,6 +59,7 @@ import { ProTableProps } from '../types/index'
 import { getDynamicProps } from '../../shared'
 
 const props = defineProps(baseProps)
+const emit = defineEmits(['emit', 'pageChange', 'pageSizeChange'])
 const attrs = useAttrs()
 const innerPropsRef = ref<Partial<ProTableProps>>()
 
@@ -96,8 +97,6 @@ const { getCacheColumns, getColumns, setColumns, getViewColumns } = useColumns(g
 
 const wrapRef = ref(null)
 
-const emit = defineEmits(['reset'])
-
 const fetchData = async (info?: Record<string, any>) => {
   if (!request) return
   setLoading(true)
@@ -134,11 +133,17 @@ fetchData()
 
 const onPageChange = (current: number) => {
   setPagination({ current })
+  emit('pageChange', {
+    page: current,
+  })
   fetchData()
 }
 
 const onPageSizeChange = (pageSize: number) => {
   setPagination({ current: 1, pageSize })
+  emit('pageSizeChange', {
+    pageSize,
+  })
   fetchData()
 }
 
