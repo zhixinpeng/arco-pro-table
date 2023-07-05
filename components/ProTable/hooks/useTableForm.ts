@@ -7,7 +7,7 @@ import { ProTableProps } from '../types'
 export function useTableForm(
   propsRef: ComputedRef<ProTableProps>,
   fetchData: (info?: Record<string, any>) => Promise<void>,
-  emit: (event: 'reset', ...args: any[]) => void,
+  emit: (event: any, ...args: any[]) => void,
 ) {
   const getFormProps = computed((): Partial<ProFormProps> => {
     const { formConfig, title } = unref(propsRef)
