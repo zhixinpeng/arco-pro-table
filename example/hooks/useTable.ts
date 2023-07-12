@@ -9,6 +9,7 @@ export function useTable() {
   const { city } = useCitySelect()
 
   const request = async (params: any) => {
+    console.log('请求参数', params)
     const { data } = await axios.get('https://6412b953232c91393dd41c2d.mockapi.io/api/users')
 
     return {

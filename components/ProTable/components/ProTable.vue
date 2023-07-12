@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, unref, useAttrs, watch } from 'vue'
+import { ref, computed, unref, useAttrs, watch, reactive } from 'vue'
 import { isBoolean } from 'lodash'
 import { PaginationProps, Row, Col, Space, Table } from '@arco-design/web-vue'
 import type { Size } from '@arco-design/web-vue'
@@ -96,8 +96,9 @@ const { getPaginationInfo, getPagination, setPagination, setShowPagination, getS
 const { getCacheColumns, getColumns, setColumns, getViewColumns } = useColumns(getProps)
 
 const wrapRef = ref(null)
+const formInfo = ref<Record<string, any>>({})
 
-const fetchData = async (info?: Record<string, any>) => {
+const fetchData = async () => {
   if (!request) return
   setLoading(true)
   try {
@@ -112,11 +113,9 @@ const fetchData = async (info?: Record<string, any>) => {
       }
     }
 
-    if (info) {
-      params = {
-        ...params,
-        ...info,
-      }
+    params = {
+      ...params,
+      ...formInfo.value,
     }
 
     const { data, total } = await request(params)
@@ -152,7 +151,12 @@ const reload = async (force?: boolean) => {
   await fetchData()
 }
 
-const { getFormProps, handleFormSubmit, handleFormReset } = useTableForm(getProps, fetchData, emit)
+const { getFormProps, handleFormSubmit, handleFormReset } = useTableForm(
+  getProps,
+  fetchData,
+  emit,
+  formInfo,
+)
 
 const tableAction: ProTableAction = {
   ...methods,
