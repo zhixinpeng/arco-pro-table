@@ -98,7 +98,7 @@ const { getCacheColumns, getColumns, setColumns, getViewColumns } = useColumns(g
 const wrapRef = ref(null)
 const formInfo = ref<Record<string, any>>({})
 
-const fetchData = async () => {
+const fetchData = async (init?: boolean) => {
   if (!request) return
   setLoading(true)
   try {
@@ -118,6 +118,13 @@ const fetchData = async () => {
       ...formInfo.value,
     }
 
+    if (init) {
+      params = {
+        ...params,
+        ...getProps.value.formConfig.initFormModel,
+      }
+    }
+
     const { data, total } = await request(params)
     renderData.value = data
     setPagination({ total })
@@ -128,7 +135,8 @@ const fetchData = async () => {
   }
 }
 
-fetchData()
+
+fetchData(true)
 
 const onPageChange = (current: number) => {
   setPagination({ current })

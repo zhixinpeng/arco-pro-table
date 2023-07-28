@@ -59,6 +59,9 @@ const getProps = computed(() => {
 
 const setProps = async (formProps: Partial<ProFormProps>) => {
   innerPropsRef.value = deepMerge(unref(innerPropsRef) || {}, formProps)
+  Object.keys(formProps.initFormModel).map(key => {
+    setFormModel(key, formProps.initFormModel[key])
+  })
 }
 
 const getBindValues = computed(() => {

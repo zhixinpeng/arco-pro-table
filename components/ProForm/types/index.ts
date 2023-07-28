@@ -48,6 +48,9 @@ export interface ProFormProps {
    * 列数
    */
   cols: number
+
+  /** 初始值 */
+  initFormModel: object
 }
 
 export interface ProFormAction {

@@ -31,6 +31,8 @@ export function useTableForm(
     emit('reset')
   }
 
+  formInfo.value = unref(propsRef).formConfig?.initFormModel || {}
+
   return {
     getFormProps,
     handleFormSubmit,

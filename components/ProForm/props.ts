@@ -42,4 +42,8 @@ export const baseProps = {
     type: Number,
     default: 4,
   },
+  initFormModel: {
+    type: Object,
+    default: () => ({}),
+  },
 }
