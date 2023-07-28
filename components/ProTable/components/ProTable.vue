@@ -121,7 +121,7 @@ const fetchData = async (init?: boolean) => {
     if (init) {
       params = {
         ...params,
-        ...getProps.value.formConfig.initFormModel,
+        ...getProps.value.formConfig?.initFormModel,
       }
     }
 

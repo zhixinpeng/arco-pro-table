@@ -6,7 +6,7 @@ import { ProTableProps } from '../types'
 
 export function useTableForm(
   propsRef: ComputedRef<ProTableProps>,
-  fetchData: (info?: Record<string, any>) => Promise<void>,
+  fetchData: (init?: boolean) => Promise<void>,
   emit: (event: any, ...args: any[]) => void,
   formInfo: Ref<Record<string, any>>,
 ) {

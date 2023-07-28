@@ -92,9 +92,6 @@ export function useTable() {
       span: 16,
     },
     cols: 4,
-    initFormModel: {
-      name: '张三',
-    },
     schemas: [
       {
         field: 'name',
